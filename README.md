@@ -26,7 +26,33 @@
 - Coil (Image loading)
 - StateFlow / Flow (Reactive UI)
 
+# Architecture
+
+  * Presentation Layer
+     - Composable UI screens: AnimeListScreen, AnimeDetailScreen
+     - ViewModels expose StateFlow objects to represent UI states (loading, success, error)
+
+  * Domain Layer
+    - UseCases: GetTopAnimeUseCase, GetAnimeDetailUseCase
+
+  * Data Layer
+    - Repository: AnimeRepositoryImpl
+    - Handles API calls via Retrofit
+
+# Caches data in Room
+
+ - Handles offline + online logic using networkBoundResource
+ - Dependency Injection
+ - Hilt provides API, Database, Repository, and UseCases
+
 # Offline Behavior
 
 - Listing Page: shows cached anime if offline, fetches from API if online. 
 - Detail Page: shows cached anime if offline, fetches from API if online
+
+# ScreenShot
+
+  * Listing Page
+     - ![img.png](img.png)
+  * Detail Page
+     - ![img_1.png](img_1.png)
