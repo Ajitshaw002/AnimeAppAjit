@@ -34,10 +34,7 @@ class AnimeRepositoryImpl @Inject constructor(
             networkMonitor = networkMonitor, // pass your monitor here
             query = { dao.getAnimeById(id).map { it?.toDomain() } },
             fetch = { api.getAnimeDetail(id).data.toEntity() },
-            saveFetchResult = { dao.insert(it) },
-            shouldFetch = { cached ->
-                cached == null || networkMonitor.isConnected() // fetch if no cached data or network is available
-            }
+            saveFetchResult = { dao.insert(it) }
         )
 
 }

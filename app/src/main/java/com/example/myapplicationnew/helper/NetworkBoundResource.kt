@@ -7,8 +7,7 @@ inline fun <ResultType, RequestType> networkBoundResource(
     networkMonitor: NetworkMonitor,
     crossinline query: () -> Flow<ResultType>,
     crossinline fetch: suspend () -> RequestType,
-    crossinline saveFetchResult: suspend (RequestType) -> Unit,
-    crossinline shouldFetch: (ResultType?) -> Boolean = { true }
+    crossinline saveFetchResult: suspend (RequestType) -> Unit
 ): Flow<Resource<ResultType>> = flow {
     emit(Resource.Loading)
 
